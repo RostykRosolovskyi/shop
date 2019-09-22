@@ -1,11 +1,9 @@
 package internetshop.controller;
 
 import internetshop.lib.Injector;
-import org.apache.log4j.Logger;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
+import org.apache.log4j.Logger;
 
 public class InjectInitializer implements ServletContextListener {
 
@@ -23,6 +21,5 @@ public class InjectInitializer implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
     }
 }

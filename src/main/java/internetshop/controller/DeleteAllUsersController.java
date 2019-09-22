@@ -2,12 +2,12 @@ package internetshop.controller;
 
 import internetshop.lib.Inject;
 import internetshop.service.UserService;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class DeleteAllUsersController extends HttpServlet {
     @Inject

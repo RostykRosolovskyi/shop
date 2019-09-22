@@ -5,12 +5,12 @@ import internetshop.model.Order;
 import internetshop.model.User;
 import internetshop.service.OrderService;
 import internetshop.service.UserService;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class DeleteOrderController extends HttpServlet {
     @Inject
