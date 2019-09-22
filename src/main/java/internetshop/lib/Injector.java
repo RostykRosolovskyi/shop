@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Injector {
     private static List<Class> classes = new ArrayList<>();
-    public static final String PROJECT_MAIN_PACKAGE = "internet-shop";
+    public static final String PROJECT_MAIN_PACKAGE = "internetshop";
 
     static {
         try {

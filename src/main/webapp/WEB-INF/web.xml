@@ -60,7 +60,7 @@
 
     <servlet>
         <servlet-name>bucket</servlet-name>
-        <servlet-class>internetshop.controller.AddToBucketController</servlet-class>
+        <servlet-class>internetshop.controller.GetBuckectController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>bucket</servlet-name>
