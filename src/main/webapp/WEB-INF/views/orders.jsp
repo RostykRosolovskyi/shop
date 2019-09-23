@@ -21,10 +21,8 @@
 </table>
 
 <br>
-
 <a href="bucket">Show user's bucket</a>
 <br>
 <a href="shop">Return to the shop</a>
-
 </body>
 </html>

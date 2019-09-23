@@ -21,6 +21,7 @@ public class CompleteOrderController extends HttpServlet {
     private static UserService userService;
     @Inject
     private static BucketService bucketService;
+    private static final Long sesionId = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -28,7 +29,7 @@ public class CompleteOrderController extends HttpServlet {
         Long bucketId = Long.parseLong(req.getParameter("bucket_id"));
         Bucket bucket = bucketService.get(bucketId);
         if (bucket.getItems().size() != 0) {
-            User user = userService.get(0L);
+            User user = userService.get(sesionId);
             Order order = new Order(bucket.getItems(), user);
             orderService.add(order);
             user.getOrders().add(order);

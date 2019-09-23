@@ -1,8 +1,10 @@
 package internetshop.controller;
 
 import internetshop.lib.Injector;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
 import org.apache.log4j.Logger;
 
 public class InjectInitializer implements ServletContextListener {
@@ -14,7 +16,8 @@ public class InjectInitializer implements ServletContextListener {
         try {
             Injector.injectDependencies();
         } catch (IllegalAccessException e) {
-            logger.error(e);
+            logger.error("We catch exception in contextInitialized method class Inject"
+                    + e.getMessage());
             throw new RuntimeException(e);
         }
     }

@@ -18,6 +18,7 @@ public class ShopController extends HttpServlet {
     private static ItemService itemService;
     @Inject
     private static UserService userService;
+    private static final Long sesionId = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -25,7 +26,7 @@ public class ShopController extends HttpServlet {
         if (userService.getAll().size() == 0) {
             req.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
         }
-        User user = userService.get(0L);
+        User user = userService.get(sesionId);
         List<Item> items = itemService.getAll();
         req.setAttribute("user", user);
         req.setAttribute("items", items);

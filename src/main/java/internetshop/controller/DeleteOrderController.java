@@ -17,13 +17,14 @@ public class DeleteOrderController extends HttpServlet {
     private static OrderService orderService;
     @Inject
     private static UserService userService;
+    private static final Long sesionId = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Long orderId = Long.parseLong(req.getParameter("order_id"));
         Order order = orderService.get(orderId);
-        User user = userService.get(0L);
+        User user = userService.get(sesionId);
         orderService.delete(orderId);
         user.getOrders().remove(order);
         resp.sendRedirect(req.getContextPath() + "/showAllOrders");
