@@ -2,12 +2,15 @@ package internetshop.service.impl;
 
 import internetshop.dao.BucketDao;
 import internetshop.dao.UserDao;
+import internetshop.exceptions.AuthentificationException;
 import internetshop.lib.Inject;
 import internetshop.lib.Service;
 import internetshop.model.User;
 import internetshop.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,8 +22,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User add(User user) {
         User newUser = userDao.add(user);
+        user.setToken(getTocken());
         bucketDao.add(newUser.getBucket());
         return newUser;
+    }
+
+    @Override
+    public String getTocken() {
+        return UUID.randomUUID().toString();
+    }
+
+    @Override
+    public Optional<User> getByToken(String token) {
+        return userDao.getByTocken(token);
     }
 
     @Override
@@ -46,5 +60,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userDao.getAll();
+    }
+
+    @Override
+    public User login(String login, String password) throws AuthentificationException {
+        return userDao.login(login, password);
     }
 }

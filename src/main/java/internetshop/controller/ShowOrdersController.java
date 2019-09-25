@@ -1,10 +1,13 @@
 package internetshop.controller;
 
 import internetshop.lib.Inject;
+import internetshop.model.Order;
+import internetshop.model.User;
 import internetshop.service.OrderService;
 import internetshop.service.UserService;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,13 +19,14 @@ public class ShowOrdersController extends HttpServlet {
     private static OrderService orderService;
     @Inject
     private static UserService userService;
-    private static final Long sesionId = 0L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("user", userService.get(sesionId));
-        req.setAttribute("orders", userService.get(sesionId).getOrders());
-        req.getRequestDispatcher("WEB-INF/views/orders.jsp").forward(req, resp);
+
+        User user = (User) req.getSession().getAttribute("loggedInUser");
+        List<Order> orders = userService.get(user.getId()).getOrders();
+        req.setAttribute("orders", orders);
+        req.getRequestDispatcher("/WEB-INF/views/orders.jsp").forward(req, resp);
     }
 }

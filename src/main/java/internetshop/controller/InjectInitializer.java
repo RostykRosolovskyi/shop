@@ -16,7 +16,7 @@ public class InjectInitializer implements ServletContextListener {
         try {
             Injector.injectDependencies();
         } catch (IllegalAccessException e) {
-            logger.error("We catch exception in contextInitialized method class Inject"
+            logger.error("We catch exceptions in contextInitialized method class Inject"
                     + e.getMessage());
             throw new RuntimeException(e);
         }

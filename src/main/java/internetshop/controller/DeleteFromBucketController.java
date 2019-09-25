@@ -2,11 +2,12 @@ package internetshop.controller;
 
 import internetshop.lib.Inject;
 import internetshop.model.Item;
+import internetshop.model.User;
 import internetshop.service.BucketService;
 import internetshop.service.ItemService;
+
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,11 +20,12 @@ public class DeleteFromBucketController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        Long bucketId = Long.parseLong(req.getParameter("bucket_id"));
+            throws IOException {
+        User user = (User) req.getSession().getAttribute("loggedInUser");
+        Long bucketId = user.getBucket().getId();
         Long itemId = Long.parseLong(req.getParameter("item_id"));
         Item item = itemService.get(itemId);
         bucketService.deleteItem(bucketId, item);
-        resp.sendRedirect(req.getContextPath() + "/bucket");
+        resp.sendRedirect(req.getContextPath() + "/user/bucket");
     }
 }

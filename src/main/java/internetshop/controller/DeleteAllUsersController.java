@@ -18,7 +18,7 @@ public class DeleteAllUsersController extends HttpServlet {
             throws ServletException, IOException {
         String userId = req.getParameter("user_id");
         userService.delete(Long.valueOf(userId));
-        resp.sendRedirect(req.getContextPath() + "/users");
+        resp.sendRedirect(req.getContextPath() + "/user/users");
 
     }
 }

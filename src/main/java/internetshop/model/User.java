@@ -13,6 +13,15 @@ public class User {
     private String password;
     private List<Order> orders;
     private Bucket bucket;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public User() {
         id = UserIdGenerator.generateId();
