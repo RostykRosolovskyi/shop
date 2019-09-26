@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
-public class LogOutController extends HttpServlet {
-    private static Logger logger = Logger.getLogger(LogOutController.class);
+public class LogoutController extends HttpServlet {
+    private static Logger logger = Logger.getLogger(LogoutController.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -18,7 +18,7 @@ public class LogOutController extends HttpServlet {
         cookie.setMaxAge(0);
         resp.addCookie(cookie);
         User user = (User) req.getSession().getAttribute("loggedInUser");
-        req.getSession().removeAttribute("loggedInUser");
+        req.getSession().invalidate();
         logger.info("User " + user.getLogin() + " logged off");
         resp.sendRedirect(req.getContextPath() + "/index");
     }

@@ -6,6 +6,7 @@ import internetshop.model.Role;
 import internetshop.model.User;
 import internetshop.service.ItemService;
 import internetshop.service.UserService;
+
 import java.io.IOException;
 import java.util.UUID;
 
@@ -22,12 +23,10 @@ public class InjectDataController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
         itemService.add(new Item("Xiaomi", 15.));
         itemService.add(new Item("Iphone", 350.));
         itemService.add(new Item("Samsung", 40.));
         itemService.add(new Item("Huawei", 15.));
-
     }
 
     @Override

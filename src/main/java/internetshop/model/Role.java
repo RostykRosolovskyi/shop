@@ -3,7 +3,7 @@ package internetshop.model;
 import internetshop.idstorage.RoleIdGenerator;
 
 public class Role {
-    private final long id;
+    private final Long id;
     private RoleName roleName;
 
     public Role(RoleName roleName) {
@@ -13,10 +13,9 @@ public class Role {
 
     public static Role of(String roleName) {
         return new Role(RoleName.valueOf(roleName));
-
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
