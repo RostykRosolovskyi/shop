@@ -1,6 +1,7 @@
 package internetshop.controller;
 
 import internetshop.lib.Inject;
+import internetshop.model.Role;
 import internetshop.model.User;
 import internetshop.service.UserService;
 
@@ -31,6 +32,7 @@ public class RegistrationController extends HttpServlet {
         user.setSurname(req.getParameter("surname"));
         user.setLogin(req.getParameter("login"));
         user.setPassword(req.getParameter("psw"));
+        user.addRole(Role.of("USER"));
         userService.add(user);
         Cookie cookie = new Cookie("MATE", user.getToken());
         resp.addCookie(cookie);
