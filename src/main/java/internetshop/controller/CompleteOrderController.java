@@ -25,7 +25,7 @@ public class CompleteOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
-        User userFromSession = (User) req.getSession().getAttribute("loggedInUser");
+        User userFromSession = (User) req.getSession().getAttribute("user");
         User user = userService.get(userFromSession.getId());
         Bucket bucket = bucketService.get(user.getBucket().getId());
         if (bucket.getItems().size() != 0) {
